@@ -10,15 +10,21 @@
     <div class="wrapper">
       <h1>Image_Search</h1>
       <form id="search-form">
-        <input
-          type="text"
-          id="search-box"
-          placeholder="Search anything here..."
-        />
+        <div class="input-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="search-box"
+            placeholder="Search anything here..."
+          />
+        </div>
         <button type="button">Search</button>
       </form>
       <div id="search-result"></div>
-      <button id="show-more-btn">Show More</button>
+      <h1 id="loading">
+        loading <span class="jap1">.</span> <span class="jap2">.</span>
+        <span class="jap3">.</span>
+      </h1>
     </div>
     <script src="script.js"></script>
   </body>

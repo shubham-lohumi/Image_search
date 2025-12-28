@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background changer</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="style.css" />
+    <div class="container">
+      <div class="img-box">
+        <!-- BACKGROUND IMAGE -->
+        <img class="base-img" src="image/transparent.png" />
+
+        <!-- OVERLAY IMAGE -->
+        <div class="img-wrap">
+          <img src="image/original.jpg" class="orignal" />
+        </div>
+        <span id="line">
+          <img src="image/arrow.png" class="arrow" />
+        </span>
+      </div>
+    </div>
+    <script>
+      var imgbox = document.querySelector(".img-box");
+      var imgWrap = document.querySelector(".img-wrap");
+      let originalimg = document.querySelector(".orignal");
+      originalimg.style.width = imgbox.offsetWidth + "px";
+      let line = document.getElementById("line");
+      let leftSapce = imgbox.offsetLeft;
+      imgbox.onmousemove = function (e) {
+        var boxWidth = e.pageX - leftSapce + "px";
+        imgWrap.style.width = boxWidth;
+        line.style.left = boxWidth;
+      };
+    </script>
+  </body>
+</html>

@@ -2,23 +2,25 @@ const searchForm = document.getElementById("search-form");
 const searchbox = document.getElementById("search-box");
 const searchResult = document.getElementById("search-result");
 const showMoreBtn = document.getElementById("show-more-btn");
+const loading = document.getElementById("loading");
 let keyword = "";
 const accessKey = "3S3CNyuPAp65EJ1LglKZ6XMA_hErFnnLtzXqoTlIbGM";
 let page = 1;
 async function searchImage() {
-  const prev=searchbox.value;
-  if(keyword!==prev){
-    page=1;
+  const prev = searchbox.value;
+  if (keyword !== prev) {
+    page = 1;
     keyword = prev;
-    searchResult.innerHTML=""; 
+    searchResult.innerHTML = "";
   }
 
   const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessKey}&per_page=12`;
   const respose = await fetch(url);
   const data = await respose.json();
   const results = data.results;
+  console.log(data);
+
   results.map((result) => {
-    
     const image = document.createElement("img");
     image.src = result.urls.small;
     image.classList.add("hover-image");
@@ -30,7 +32,6 @@ async function searchImage() {
     image.style.width = "300px";
     image.style.objectFit = "cover";
     image.style.borderRadius = "6px";
-    
 
     searchResult.appendChild(imagelink);
   });
@@ -41,8 +42,20 @@ searchForm.addEventListener("submit", (e) => {
   searchImage();
 });
 
-showMoreBtn.addEventListener("click", async () => {
-  page++;
-  await searchImage();
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+// showMoreBtn.addEventListener("click", async () => {
+//   page++;
+//   await searchImage();
+//   window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+// });
+
+window.addEventListener("scroll", async () => {
+  if (
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight - 10
+  ) {
+    page++;
+    loading.style.display = "block";
+    await searchImage();
+    loading.style.display = "none";
+  }
 });

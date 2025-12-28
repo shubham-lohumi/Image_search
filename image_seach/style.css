@@ -35,16 +35,7 @@ form {
     border-radius: 8px;
 }
 
-form input {
-    flex: 1;
-    height: 100%;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: #fff;
-    font-size: 18px;
-    padding: 0 30px;
-}
+
 
 form button {
     padding: 0 40px;
@@ -59,6 +50,22 @@ form button {
     cursor: pointer;
 }
 
+form input {
+    flex: 1;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    padding: 0 30px 0 45px;
+    /* icon ke liye space */
+}
+
+.input-box:focus-within .search-icon {
+    opacity: 1;
+}
+
 ::placeholder {
     color: #fff;
     font-size: 18px;
@@ -69,11 +76,11 @@ form button {
     color: #000000;
     width: 100px;
     border-radius: 5px;
-    padding: 9px ;
+    padding: 9px;
     cursor: pointer;
-    margin:10px 20px  auto auto ;
+    margin: 10px 20px auto auto;
     display: none;
-    
+
 }
 
 #search-result {
@@ -86,7 +93,66 @@ form button {
     height: fit-content;
     margin-bottom: 50px;
 }
-.hover-image:hover{
+
+.hover-image:hover {
     transform: scale(1.01);
     box-shadow: 5px 9px 20px #000;
+}
+
+.input-box {
+    position: relative;
+    flex: 1;
+    height: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#loading {
+    display: none;
+}
+
+.jap1 {
+    animation-name: move;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
+
+.jap2 {
+    animation-name: move;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.1s;
+}
+
+.jap3 {
+    animation-name: move;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.2;
+}
+
+@keyframes move {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+
+    }
+
+    100% {
+        opacity: 1;
+
+    }
 }
