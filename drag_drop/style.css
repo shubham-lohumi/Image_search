@@ -1,0 +1,40 @@
+body {
+    background: linear-gradient(270deg, #5d5d5d, #f16c6c, #5d5d5d);
+    background-size: 400% 400%;
+    animation: bg 8s ease infinite;
+}
+
+@keyframes bg {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#drag {
+    width: 200px;
+    height: 200px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+#item {
+    width: 100px;
+    height: 100px;
+    background: rgb(53, 48, 48);
+    cursor: grab;
+}
